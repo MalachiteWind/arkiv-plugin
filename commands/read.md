@@ -17,7 +17,7 @@ Load arkiv for orientation. This is a read-only command. Do not write any docume
    2. `ROOT/.arkiv/INDEX.md`
    3. every file in `ROOT/.arkiv/handoff/`
    4. `ROOT/.arkiv/todo.md`
-4. Load more, silently, until you can answer three questions: the project purpose, the high-level working, and the open work. Escalate tiers by the rule below. Read a `dev/` document body when its INDEX line matches purpose or working. Do not print this load.
+4. Answer three questions from this load: the project purpose, the high-level working, and the open work. Use the INDEX one-liners as the default source. Escalate a tier only by the rule below. Read a `dev/` document `summary` when an INDEX line matches a question. Read a `dev/` document body only when that `summary` does not answer the question. Do not read a body for extra confidence. Do not print this load.
 
 ## Progressive disclosure
 
@@ -29,7 +29,7 @@ Load one tier at a time. Escalate one tier only when the cheaper tier does not a
 
 ## Output — a concise summary, not an outline
 
-After the silent load, write a short, high-level summary of the project. Write it through the ASD-STE100 skill. Invoke the Skill `arkiv:asd-ste100` in **STE-flavored** mode. If the Skill name is not available, read `${CLAUDE_PLUGIN_ROOT}/skills/asd-ste100/SKILL.md` and apply its rules.
+After the silent load, write a short, high-level summary of the project. Write plain prose. Use active voice. Write one idea per sentence. Do not invoke the `arkiv:asd-ste100` skill for this summary. The summary is transient terminal output. The summary is not a stored arkiv document. The skill governs the write commands only.
 
 arkiv normally serves another repository. In that case, summarize **that project**, not the plugin. Reconstruct the summary from arkiv. Cover three parts:
 
