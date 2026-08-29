@@ -1,12 +1,12 @@
 #!/bin/sh
 # Invisibility guard for a target repository.
 #
-# The store name is a coined token. It must never leak into the developer's
+# arkiv is a coined token. It must never leak into the developer's
 # tracked artifacts (code, comments, tracked filenames). This script blocks a
 # commit when the token appears in tracked content or in a tracked filename.
 #
-# The store's own files are exempt. They legitimately name the store, and they
-# are exempt whether or not the store is tracked.
+# arkiv's own files are exempt. They legitimately name arkiv, and they
+# are exempt whether or not arkiv is tracked.
 #
 # Wire it as a pre-commit hook in the TARGET repo:
 #   ln -sf "<plugin>/bin/check-invisibility.sh" .git/hooks/pre-commit
@@ -32,7 +32,7 @@ if [ "$rc" -gt 1 ]; then
     exit 1
 fi
 if [ "$rc" -eq 0 ]; then
-    echo "invisibility guard: the store token appears in tracked content:" >&2
+    echo "invisibility guard: tracked content contains the forbidden token 'arkiv':" >&2
     echo "$content" >&2
     violation=1
 fi
@@ -45,14 +45,14 @@ if [ "$rc" -gt 1 ]; then
     exit 1
 fi
 if [ -n "$names" ]; then
-    echo "invisibility guard: the store token appears in tracked filenames:" >&2
+    echo "invisibility guard: a tracked filename contains the forbidden token 'arkiv':" >&2
     echo "$names" >&2
     violation=1
 fi
 
 if [ "$violation" -ne 0 ]; then
     echo "" >&2
-    echo "The store name must not appear in tracked artifacts. Remove it, then commit." >&2
+    echo "The token 'arkiv' must not appear in tracked artifacts. Remove it, then commit." >&2
     exit 1
 fi
 exit 0

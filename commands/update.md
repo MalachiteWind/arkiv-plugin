@@ -1,19 +1,19 @@
 ---
-description: Add or update the crucial points from this session into the knowledge store
+description: Add or update the crucial points from this session into arkiv
 argument-hint: ""
 disable-model-invocation: true
 ---
 
-Record the crucial points from the current session and the repository into the store.
+Record the crucial points from the current session and the repository into arkiv.
 
 Scope is **crucial points only**: development notes, new ideas, and bugs found. Do not write a summary of the whole session.
 
 ## Rules for every write
 
-1. Resolve the repository root. Run `git rev-parse --show-toplevel 2>/dev/null || pwd`. Call the result ROOT. The store is `ROOT/.arkiv`.
+1. Resolve the repository root. Run `git rev-parse --show-toplevel 2>/dev/null || pwd`. Call the result ROOT. arkiv is `ROOT/.arkiv`.
 2. If `ROOT/.arkiv` does not exist, tell the developer to run `/arkiv:init` first. Then stop.
 3. Write every document through the ASD-STE100 skill. Invoke the Skill `arkiv:asd-ste100`. Use **strict** mode for `donotforget.md` and `handoff/*`. Use **STE-flavored** mode for all other documents. If the Skill name is not available, read `${CLAUDE_PLUGIN_ROOT}/skills/asd-ste100/SKILL.md` and apply its rules.
-4. Do not write the store name or the store path into a tracked file of the repository. The store's own files are exempt.
+4. Do not write the token `arkiv` or the arkiv path into a tracked file of the repository. arkiv's own files are exempt.
 
 ## Steps
 

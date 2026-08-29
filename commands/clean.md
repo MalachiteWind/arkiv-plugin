@@ -1,16 +1,16 @@
 ---
-description: Find stale, outdated, or duplicated store content and propose a cleanup
+description: Find stale, outdated, or duplicated arkiv content and propose a cleanup
 argument-hint: ""
 disable-model-invocation: true
 ---
 
-Find stale, outdated, or duplicated content in the store. Propose a cleanup plan. Act on confirmation.
+Find stale, outdated, or duplicated content in arkiv. Propose a cleanup plan. Act on confirmation.
 
 ## Steps
 
-1. Resolve the repository root. Run `git rev-parse --show-toplevel 2>/dev/null || pwd`. Call the result ROOT. The store is `ROOT/.arkiv`.
+1. Resolve the repository root. Run `git rev-parse --show-toplevel 2>/dev/null || pwd`. Call the result ROOT. arkiv is `ROOT/.arkiv`.
 2. If `ROOT/.arkiv` does not exist, tell the developer to run `/arkiv:init` first. Then stop.
-3. Read the store. Apply the category rules below.
+3. Read arkiv. Apply the category rules below.
 4. Show the cleanup plan. Get confirmation before you change any file.
 5. Regenerate the index after any confirmed change. Run `python3 "${CLAUDE_PLUGIN_ROOT}/bin/generate-index.py" "ROOT/.arkiv"`. An in-place edit changes an indexed field, so regenerate even when no file is added, removed, or renamed.
 

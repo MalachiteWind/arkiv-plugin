@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate INDEX.md for an .arkiv knowledge store.
+"""Generate INDEX.md for arkiv (the .arkiv/ knowledge base).
 
 INDEX.md is a runtime dispatcher. It is regenerated on demand from each
 document's YAML frontmatter. Never hand-edit it.
@@ -170,7 +170,7 @@ def main(argv):
     target = argv[1] if len(argv) > 1 else "./.arkiv"
     arkiv_dir = Path(target)
     if not arkiv_dir.is_dir():
-        print("generate-index: error: store directory not found: " + str(arkiv_dir),
+        print("generate-index: error: arkiv directory not found: " + str(arkiv_dir),
               file=sys.stderr)
         return 2
 

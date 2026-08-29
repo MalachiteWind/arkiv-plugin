@@ -8,7 +8,7 @@ Compact the current session into a hand-off document. The current chat is too co
 
 ## Steps
 
-1. Resolve the repository root. Run `git rev-parse --show-toplevel 2>/dev/null || pwd`. Call the result ROOT. The store is `ROOT/.arkiv`.
+1. Resolve the repository root. Run `git rev-parse --show-toplevel 2>/dev/null || pwd`. Call the result ROOT. arkiv is `ROOT/.arkiv`.
 2. If `ROOT/.arkiv` does not exist, tell the developer to run `/arkiv:init` first. Then stop.
 3. Compute the date. Run `date +%Y-%m-%d`.
 4. Choose a short slug for the session topic.

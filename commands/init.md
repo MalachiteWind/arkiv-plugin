@@ -1,28 +1,28 @@
 ---
-description: Create the repo-root knowledge store and propose a small starting skeleton
+description: Create the repo-root arkiv and propose a small starting skeleton
 argument-hint: "[<existing_docs_path>]"
 disable-model-invocation: true
 ---
 
-Create the repo-root knowledge store. The store prevents model-drift across sessions.
+Create the repo-root arkiv. arkiv prevents model-drift across sessions.
 
 `$1` is an optional path to existing notes. Import them when it is present.
 
 ## Rules for every write
 
-1. Resolve the repository root. Run `git rev-parse --show-toplevel 2>/dev/null || pwd`. Call the result ROOT. The store is `ROOT/.arkiv`.
+1. Resolve the repository root. Run `git rev-parse --show-toplevel 2>/dev/null || pwd`. Call the result ROOT. arkiv is `ROOT/.arkiv`.
 2. Write every document through the ASD-STE100 skill. Invoke the Skill `arkiv:asd-ste100`. Use **strict** mode for `donotforget.md` and `handoff/*`. Use **STE-flavored** mode for all other documents. If the Skill name is not available, read `${CLAUDE_PLUGIN_ROOT}/skills/asd-ste100/SKILL.md` and apply its rules.
-3. Do not write the store name or the store path into a tracked file of the repository. The store's own files are exempt.
+3. Do not write the token `arkiv` or the arkiv path into a tracked file of the repository. arkiv's own files are exempt.
 
 ## Steps
 
-1. Check for a git repository. Run `git rev-parse --show-toplevel`. If it fails, tell the developer that the exclude step needs a git repository. On request, create the store and skip step 5.
-2. Check for an existing store. If `ROOT/.arkiv` exists, **STOP**. Tell the developer to run `/arkiv:update`. `init` writes from scratch. `init` destroys an untracked store.
+1. Check for a git repository. Run `git rev-parse --show-toplevel`. If it fails, tell the developer that the exclude step needs a git repository. On request, create arkiv and skip step 5.
+2. Check for an existing arkiv. If `ROOT/.arkiv` exists, **STOP**. Tell the developer to run `/arkiv:update`. `init` writes from scratch. `init` destroys an untracked arkiv.
 3. Create the directories: `ROOT/.arkiv/research/`, `ROOT/.arkiv/dev/`, and `ROOT/.arkiv/handoff/`.
 4. Create the files: `ROOT/.arkiv/README.md`, `ROOT/.arkiv/todo.md`, and `ROOT/.arkiv/donotforget.md`.
-5. Hide the store. Resolve the exclude file with `git rev-parse --git-path info/exclude`. Add the single line `.arkiv/` to that file. Add the line only when the line is absent.
+5. Hide arkiv. Resolve the exclude file with `git rev-parse --git-path info/exclude`. Add the single line `.arkiv/` to that file. Add the line only when the line is absent.
 6. Propose a skeleton. Read `README`, `CLAUDE.md`, and the key code. Propose a small set of documents. Five deep pages are better than fifty shallow pages. Show the proposal. Get confirmation before you write.
-7. Write `README.md`. Start it with a bold banner: **NOT TRACKED — never named in the repo**. State the store purpose. State how to navigate the store. State the upshot for a fresh agent.
+7. Write `README.md`. Start it with a bold banner: **NOT TRACKED — never named in the repo**. State the arkiv purpose. State how to navigate arkiv. State the upshot for a fresh agent.
 8. Give every document the frontmatter schema below and a visible date line in the body.
 9. Regenerate the index. Run `python3 "${CLAUDE_PLUGIN_ROOT}/bin/generate-index.py" "ROOT/.arkiv"`.
 10. Print the guard-wiring command. Do not run it:

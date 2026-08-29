@@ -8,7 +8,7 @@
 #   ln -sf "<plugin>/bin/check-commit-msg.sh" .git/hooks/commit-msg
 #   chmod +x .git/hooks/commit-msg
 #
-# Exit status: 0 = clean, 1 = the store token was found in the message.
+# Exit status: 0 = clean, 1 = the message contains the forbidden token 'arkiv'.
 
 set -u
 
@@ -20,7 +20,7 @@ if [ "$#" -lt 1 ] || [ ! -f "$1" ]; then
 fi
 
 if grep -F -i -q -e "$TOKEN" "$1"; then
-    echo "invisibility guard: the store token appears in the commit message. Remove it." >&2
+    echo "invisibility guard: the commit message contains the forbidden token 'arkiv'. Remove it." >&2
     exit 1
 fi
 exit 0
