@@ -1,0 +1,8 @@
+{
+  "name": "arkiv",
+  "version": "0.1.0",
+  "description": "A deliberate, command-driven, repo-root knowledge store that prevents model-drift across long-running sessions. All store documents are written under the ASD-STE100 controlled-language standard.",
+  "author": {
+    "name": "Ike Griss Salas"
+  }
+}

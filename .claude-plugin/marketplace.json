@@ -1,0 +1,16 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "arkiv-plugin",
+  "description": "Single-plugin marketplace for arkiv, a repo-root knowledge store that prevents model-drift across sessions.",
+  "owner": {
+    "name": "Ike Griss Salas"
+  },
+  "plugins": [
+    {
+      "name": "arkiv",
+      "source": ".",
+      "description": "A deliberate, command-driven, repo-root knowledge store that prevents model-drift across long-running sessions. All store documents are written under the ASD-STE100 controlled-language standard.",
+      "category": "development"
+    }
+  ]
+}
