@@ -26,16 +26,18 @@ Scope is **crucial points only**: development notes, new ideas, and bugs found. 
 
 ## Category rules
 
+Force no taxonomy. arkiv uses no `mod-`, `api-`, or `flow-` prefix. arkiv uses only the two high-value habits per category.
+
 On a `dev/` write:
-1. Anchor to paths. Reference `path/to/file`. Do not paste code.
-2. Capture a reconstructed decision for a non-obvious choice. Record the context, the choice, and the trade-off accepted.
+1. Anchor to paths. Reference `path/to/file`. Do not paste code. Code drifts. The repository is the source of truth for *how*. arkiv records *what* and *why*.
+2. Capture a reconstructed decision for a non-obvious choice. Record the context, the choice, and the trade-off accepted. A reconstructed decision is the most drift-critical artifact. It is often the only record of the rationale. It stops a later session from re-deciding a settled question.
 
 On a `research/` write:
-1. Write the math. Do not write a prose gloss of the math.
+1. Write the math. Do not write a prose gloss of the math. Write math as TeX. Use `$…$` for inline math. Use `$$…$$` for display math. Never put math in a code fence.
 2. Define every symbol you introduce.
-3. Do not anchor to paths. The idea is not in the code yet.
-4. Keep `status` current. On promotion, set `status: promoted`. Set `related` to the `dev/` document.
+3. Do not anchor to implementation code. The idea is not in the code yet. You may still cite evidence. Reference a result, an output, an experiment, or a data file that tests the idea. Evidence keeps the idea verifiable. A negative result has value. Record it and its evidence too.
+4. Keep `status` current. The `status` field lets a fresh agent tell a live idea from a parked or dead idea. It also stops `clean` from a prune of a parked idea as stale. On promotion, set `status: promoted`. Set `related` to the `dev/` document. A `related` slug is the basename of the target `dev/` document, with no `.md` extension and no path. This records the moment an idea becomes part of the repository's "why".
 
 On a `todo.md` write: add the open task. `todo.md` is completion-based.
 
-On a `donotforget.md` write: record the trap as an actionable, future-facing caveat ("do not do Y, it breaks Z"). This differs from a `dev/` decision, which is past-facing ("we chose X over Y because Z").
+On a `donotforget.md` write: record the trap as an actionable, future-facing caveat ("do not do Y, it breaks Z"). This differs from a `dev/` decision, which is past-facing ("the team chose X over Y because Z"). A caveat persists until the design removes the hazard. `clean` never auto-prunes a caveat. `clean` always prompts first.

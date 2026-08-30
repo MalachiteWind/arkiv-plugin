@@ -23,6 +23,7 @@ from datetime import date, datetime
 from pathlib import Path
 
 MISSING = "\u26a0 missing"   # visible marker for a missing required field
+MISSING_LINK = "\u26a0"      # visible marker for an unresolved related slug
 ABSENT = "\u2014"            # em dash: a genuinely optional field with no value
 BLOCK_INDICATORS = {"|", ">", "|-", "|+", ">-", ">+", "|8", ">8"}
 
@@ -94,6 +95,31 @@ def cell(value, required):
     return text.strip() or (MISSING if required else ABSENT)
 
 
+def related_cell(doc, dev_paths):
+    """Render a research doc's `related` cell as one-way links into dev/.
+
+    A slug is the basename of a dev/ document, without the .md extension. A resolved
+    slug becomes a relative link to the real dev/ path. An unresolved slug warns and
+    prints as marked raw text, so bad data stays distinct from an absent field.
+    """
+    raw = doc.get("related")
+    if raw is None or raw == "" or raw == []:
+        return ABSENT
+    slugs = raw if isinstance(raw, list) else [raw]   # a bare scalar is not a char list
+    slugs = [s for s in slugs if s]
+    if not slugs:
+        return ABSENT
+    parts = []
+    for slug in slugs:
+        relpath = dev_paths.get(slug)
+        if relpath:
+            parts.append("[" + slug + "](" + relpath + ")")
+        else:
+            warn(doc.relpath + ': related "' + slug + '" matches no dev/ doc')
+            parts.append("`" + slug + "` " + MISSING_LINK)
+    return ", ".join(parts)
+
+
 class Doc:
     def __init__(self, relpath, fields, ok):
         self.relpath = relpath
@@ -144,11 +170,14 @@ def sort_group(docs):
     return docs
 
 
-def render_table(docs, with_status):
+def render_table(docs, with_status, with_related=False, dev_paths=None):
     header = "| Title | Path | Updated |"
     sep = "|---|---|---|"
     if with_status:
         header += " Status |"
+        sep += "---|"
+    if with_related:
+        header += " Related |"
         sep += "---|"
     header += " Summary |"
     sep += "---|"
@@ -161,6 +190,8 @@ def render_table(docs, with_status):
         line = "| " + title + " | " + path + " | " + updated + " |"
         if with_status:
             line += " " + cell(d.get("status"), required=True) + " |"
+        if with_related:
+            line += " " + related_cell(d, dev_paths or {}) + " |"
         line += " " + summary + " |"
         rows.append(line)
     return "\n".join(rows)
@@ -185,6 +216,19 @@ def main(argv):
         else:
             extra.setdefault(cat, []).append(d)
 
+    # map each dev/ basename (no .md) to its real path, for related-slug resolution.
+    # collect() is recursive, so dev/ may hold subfolders; keep the real path, not a
+    # rebuilt dev/<slug>.md string. A duplicate basename is ambiguous, so warn and keep
+    # the first rather than silently link the wrong document.
+    dev_paths = {}
+    for d in groups["dev"]:
+        stem = Path(d.relpath).stem
+        if stem in dev_paths:
+            warn('dev/ basename "' + stem + '" is ambiguous (' + dev_paths[stem] +
+                 ", " + d.relpath + "); link may be wrong")
+        else:
+            dev_paths[stem] = d.relpath
+
     # flag missing required fields per category (surfaces the defect on stderr too)
     for d in groups["top"]:
         d.flag_missing(["title", "summary", "updated"])
@@ -206,19 +250,19 @@ def main(argv):
     out.append("")
 
     sections = [
-        ("Top-level", groups["top"], False),
-        ("research/", groups["research"], True),
-        ("dev/", groups["dev"], False),
-        ("handoff/ (active)", groups["handoff"], False),
+        ("Top-level", groups["top"], False, False),
+        ("research/", groups["research"], True, True),
+        ("dev/", groups["dev"], False, False),
+        ("handoff/ (active)", groups["handoff"], False, False),
     ]
     for name in sorted(extra):
-        sections.append((name + "/", extra[name], False))
+        sections.append((name + "/", extra[name], False, False))
 
-    for title, group, with_status in sections:
+    for title, group, with_status, with_related in sections:
         out.append("## " + title)
         out.append("")
         if group:
-            out.append(render_table(sort_group(group), with_status))
+            out.append(render_table(sort_group(group), with_status, with_related, dev_paths))
         else:
             out.append("_none_")
         out.append("")
