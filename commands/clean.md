@@ -26,6 +26,8 @@ Find stale, outdated, or duplicated content in arkiv. Propose a cleanup plan. Ac
 
 `donotforget.md`: never auto-prune a caveat. Always prompt. A caveat persists until the hazard is designed out.
 
+`conventions.md`: never prune it. Never edit it. It is a verbatim copy of the plugin template. To change it, edit the plugin template and run `/arkiv:init` in a fresh arkiv, or copy the template again.
+
 ## Writing
 
 Write any edit through the ASD-STE100 skill. Invoke the Skill `arkiv:asd-ste100`. Use **strict** mode for `donotforget.md` and `handoff/*`. Use **STE-flavored** mode for all other documents.

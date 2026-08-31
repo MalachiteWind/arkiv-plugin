@@ -18,6 +18,7 @@ arkiv lives in the `.arkiv/` directory at the repository root.
 .arkiv/
 ├── README.md          purpose, navigation, and the upshot for a fresh agent
 ├── INDEX.md           generated dispatcher — never hand-edited
+├── conventions.md     frontmatter schema, research status values, category habits
 ├── todo.md            live work queue (completion-based)
 ├── donotforget.md     persistent traps and caveats (persistence-based)
 ├── research/          ideas and worked theory (ahead of the code)
@@ -25,7 +26,7 @@ arkiv lives in the `.arkiv/` directory at the repository root.
 └── handoff/           ephemeral session hand-offs (pruned by clean)
 ```
 
-Every document carries YAML frontmatter. The `summary` line feeds the generated `INDEX.md`. A reader loads arkiv in three tiers:
+Every document carries YAML frontmatter. The `summary` line feeds the generated `INDEX.md`. The `conventions.md` document holds the full frontmatter schema, the research status values, and the per-category habits. A reader loads arkiv in three tiers:
 
 1. the `INDEX.md` one-liners
 2. a matched document's `summary` frontmatter

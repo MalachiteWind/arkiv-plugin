@@ -14,7 +14,7 @@ Compact the current session into a hand-off document. The current chat is too co
 4. Choose a short slug for the session topic.
 5. Write `ROOT/.arkiv/handoff/<YYYY-MM-DD>-<slug>.md`. Capture only what the next session needs to resume.
 6. Write the document through the ASD-STE100 skill in **strict** mode. Invoke the Skill `arkiv:asd-ste100`. If the Skill name is not available, read `${CLAUDE_PLUGIN_ROOT}/skills/asd-ste100/SKILL.md` and apply its rules.
-7. Give the document the common frontmatter schema and the visible date line (see `/arkiv:init`).
+7. Give the document the common frontmatter schema and the visible date line (see `ROOT/.arkiv/conventions.md`).
 8. Regenerate the index. Run `python3 "${CLAUDE_PLUGIN_ROOT}/bin/generate-index.py" "ROOT/.arkiv"`.
 
 ## Note
