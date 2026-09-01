@@ -26,6 +26,8 @@ Find stale, outdated, or duplicated content in arkiv. Propose a cleanup plan. Ac
 
 `donotforget.md`: never auto-prune a caveat. Always prompt. A caveat persists until the hazard is designed out.
 
+Duplicated content: a duplicate is the same idea in more than one place. The idea can be the same text, the same writing, or the same file. Read all of arkiv to find a duplicate. Consolidate a duplicate into one place. Keep the information. Remove only the redundant copy.
+
 `conventions.md`: never prune it. Never edit it. It is a verbatim copy of the plugin template. To change it, edit the plugin template and run `/arkiv:init` in a fresh arkiv, or copy the template again.
 
 ## Writing
