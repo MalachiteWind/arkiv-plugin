@@ -14,7 +14,7 @@ Scope is **crucial points only**: development notes, new ideas, and bugs found. 
 2. If `ROOT/.arkiv` does not exist, tell the developer to run `/arkiv:init` first. Then stop.
 3. Write every document through the ASD-STE100 skill. Invoke the Skill `arkiv:asd-ste100`. Use **strict** mode for `donotforget.md` and `handoff/*`. Use **STE-flavored** mode for all other documents. If the Skill name is not available, read `${CLAUDE_PLUGIN_ROOT}/skills/asd-ste100/SKILL.md` and apply its rules.
 4. Do not write the token `arkiv` or the arkiv path into a tracked file of the repository. arkiv's own files are exempt.
-5. Read `ROOT/.arkiv/conventions.md` for the frontmatter schema, the research status values, and the category habits. Apply it to every document you write. Never edit `conventions.md`. It is a verbatim copy of the plugin template.
+5. Read `ROOT/.arkiv/conventions.md` for the frontmatter schema, the research status values, and the category habits. Apply it to every document you write. Never edit `conventions.md`. It is a verbatim copy of the plugin template. To update it from a changed plugin template, run `/arkiv:sync`.
 
 ## Steps
 
@@ -28,7 +28,7 @@ Scope is **crucial points only**: development notes, new ideas, and bugs found. 
 
 ## Category rules
 
-The frontmatter schema, the research status values, and the `dev/` and `research/` habits live in `ROOT/.arkiv/conventions.md`. Read it. Apply it to every document you write. It is the single source of truth for the schema and the conventions.
+The frontmatter schema, the research status values, and the `dev/` and `research/` habits live in `ROOT/.arkiv/conventions.md`. Read it. Apply it to every document you write. That file is a copy of `${CLAUDE_PLUGIN_ROOT}/templates/conventions.md`. The template is the single source of truth for the schema and the conventions. `/arkiv:sync` re-copies the template.
 
 Two category actions are specific to `update`:
 

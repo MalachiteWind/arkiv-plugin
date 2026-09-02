@@ -7,7 +7,7 @@ updated: __INIT_DATE__
 
 Created: __INIT_DATE__ · Updated: __INIT_DATE__
 
-This document holds the arkiv schema and the arkiv conventions. A fresh agent reads it to learn the frontmatter fields, the research status values, and the per-category habits. This document is a verbatim copy of the plugin template. Do not hand-edit it. To change it, edit the plugin template and copy it again.
+This document holds the arkiv schema and the arkiv conventions. A fresh agent reads it to learn the frontmatter fields, the research status values, and the per-category habits. This document is a verbatim copy of the plugin template. Do not hand-edit it. To change it, edit the plugin template. Then run `/arkiv:sync`. That command compares this copy against the template and re-copies the template.
 
 ## Frontmatter schema
 

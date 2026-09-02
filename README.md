@@ -47,6 +47,7 @@ Every document follows the ASD-STE100 controlled-language standard. The plugin b
 | `/arkiv:read [<optional_path>]` | Summarize the project from arkiv for orientation. `Optional`: Read a given path in full for extra context. |
 | `/arkiv:clean` | Find stale, outdated, or duplicated content. Propose a cleanup to arkiv. |
 | `/arkiv:handoff` | Compact current session into an ephemeral hand-off for the next session. |
+| `/arkiv:sync` | Compare `conventions.md` against the plugin template. Re-copy the template when the two differ. |
 | `/arkiv:track [true\|false]` | Toggle whether git can track arkiv. Default: `false`. |
 
 ## Install

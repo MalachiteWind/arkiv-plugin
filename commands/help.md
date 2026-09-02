@@ -15,7 +15,7 @@ List the arkiv commands. This is a read-only command. Do not write any document.
    `/arkiv:<name> — <description>`
 
    The `<name>` is the file name without the `.md` extension. The `<description>` is the frontmatter `description` value, verbatim.
-4. Print the commands in this order: `init`, `read`, `update`, `handoff`, `clean`, `track`, `help`. Print a command that this list does not name at the end.
+4. Print the commands in this order: `init`, `read`, `update`, `handoff`, `clean`, `sync`, `track`, `help`. Print a command that this list does not name at the end.
 
 ## Rules
 

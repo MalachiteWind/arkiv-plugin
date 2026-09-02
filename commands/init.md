@@ -20,7 +20,9 @@ Create the repo-root arkiv. arkiv prevents model-drift across sessions.
 ## Steps
 
 1. Check for a git repository. Run `git rev-parse --show-toplevel`. If it fails, tell the developer that the exclude step needs a git repository. On request, create arkiv and skip the hide step.
-2. Check for an existing arkiv. If `ROOT/.arkiv` exists, **STOP**. Tell the developer to run `/arkiv:update`. `init` writes from scratch. `init` destroys an untracked arkiv.
+2. Check for an existing arkiv. If `ROOT/.arkiv` exists, **STOP**. `init` writes from scratch. `init` destroys an untracked arkiv. Name the correct command for the developer's goal:
+   - To record new content, run `/arkiv:update`.
+   - To update `conventions.md` from a changed plugin template, run `/arkiv:sync`. `update` must never edit that file.
 3. Create the directories: `ROOT/.arkiv/research/`, `ROOT/.arkiv/dev/`, and `ROOT/.arkiv/handoff/`.
 4. Create the files: `ROOT/.arkiv/README.md`, `ROOT/.arkiv/todo.md`, and `ROOT/.arkiv/donotforget.md`.
 5. Hide arkiv. Resolve the exclude file with `git rev-parse --git-path info/exclude`. Add the single line `.arkiv/` to that file. Add the line only when the line is absent.
@@ -40,7 +42,7 @@ Create the repo-root arkiv. arkiv prevents model-drift across sessions.
    The missing-feature rule applies to a claim about specific behavior. `Serves on port 8080.` states specific behavior. The missing-feature rule does not apply to a claim about the project purpose. `A calculator.` states a purpose. An unbuilt project can state its purpose correctly. Keep a purpose claim out of the contradicted list. The missing-feature rule does not apply to a research note.
 8. Propose a skeleton. Propose a small set of documents. Five deep pages are better than fifty shallow pages. Show the proposal. Show the evidence report from the gather step. Show the three claim lists from the reconcile step. Get confirmation before you write.
 9. Write `README.md`. Give it the frontmatter schema first. Then start the body with a bold banner: **NOT TRACKED — never named in the repo**. Put the visible date line after the banner. State the arkiv purpose. State how to navigate arkiv. State the upshot for a fresh agent. Point to `conventions.md` for the schema and the conventions.
-10. Write `conventions.md`. Copy `${CLAUDE_PLUGIN_ROOT}/templates/conventions.md` to `ROOT/.arkiv/conventions.md` without change. Then replace every `__INIT_DATE__` token with today's date. Do not change any other text. Do not write this document through the skill. It is a verbatim copy.
+10. **The conventions step.** Write `conventions.md`. Copy `${CLAUDE_PLUGIN_ROOT}/templates/conventions.md` to `ROOT/.arkiv/conventions.md` without change. Then replace every `__INIT_DATE__` token with today's date. Do not change any other text. Do not write this document through the skill. It is a verbatim copy.
 11. Write the confirmed skeleton documents into `ROOT/.arkiv/dev/` and `ROOT/.arkiv/research/`.
 12. Give every document that you write the frontmatter schema from `conventions.md` and a visible date line in the body.
 13. Write the reconcile results into `ROOT/.arkiv/todo.md`. Write one open task for each claim. Use the form that matches the claim list:
